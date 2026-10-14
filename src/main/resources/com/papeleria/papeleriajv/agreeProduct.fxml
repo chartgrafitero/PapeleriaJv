@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.TextField?>
 
-<VBox xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Controllers.AgreeProductController"
-      spacing="15"
-      prefWidth="750"
-      prefHeight="450"
-      style="-fx-padding: 20; -fx-background-color: #F7F5EF;">
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="Controllers.AgreeProductController"
+           stylesheets="@styles.css"
+           styleClass="root-pane"
+           prefWidth="520">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
 
-       
-        <Label text="Agregar un nuevo producto" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-        
-        <HBox spacing="10">
-        <Button text="Añadir" onAction="AñadirProducto" />
-        
-    </HBox>
-    
-    <TextField></TextField>
-</VBox>
+    <VBox styleClass="dialog-card" spacing="16">
+
+        <VBox spacing="4">
+            <Label fx:id="lblTitulo" text="Nuevo producto" styleClass="title"/>
+            <Label text="Los campos con * son obligatorios" styleClass="hint"/>
+        </VBox>
+
+        <VBox spacing="4">
+            <Label text="Nombre *" styleClass="field-label"/>
+            <TextField fx:id="txtNombre" promptText="Ej. Lápiz HB, Cuaderno profesional"/>
+        </VBox>
+
+        <VBox spacing="4">
+            <HBox spacing="12">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Stock (piezas) *" styleClass="field-label"/>
+                    <TextField fx:id="txtStock" promptText="0"/>
+                </VBox>
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Precio por unidad *" styleClass="field-label"/>
+                    <TextField fx:id="txtPrecioUnidad" promptText="0.00"/>
+                </VBox>
+            </HBox>
+            <Label text="El stock se cuenta siempre en piezas sueltas, aunque también se venda por caja."
+                   styleClass="hint" wrapText="true"/>
+        </VBox>
+
+        <!-- Divulgación progresiva: los campos de caja solo se habilitan si hacen falta -->
+        <VBox spacing="8">
+            <CheckBox fx:id="chkPorCaja" text="Este producto también se vende por caja"/>
+            <HBox spacing="12">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Piezas por caja" styleClass="field-label"/>
+                    <TextField fx:id="txtUnidades" promptText="Ej. 12"/>
+                </VBox>
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Precio por caja" styleClass="field-label"/>
+                    <TextField fx:id="txtPrecioCaja" promptText="0.00"/>
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <Label fx:id="lblError" styleClass="error" wrapText="true" visible="false" managed="false"/>
+
+        <HBox spacing="8" alignment="CENTER_RIGHT">
+            <Button fx:id="btnCancelar" text="Cancelar" styleClass="btn-secondary"
+                    cancelButton="true" onAction="#handleCancelar"/>
+            <Button fx:id="btnGuardar" text="Guardar producto" styleClass="btn-primary"
+                    defaultButton="true" onAction="#handleGuardar"/>
+        </HBox>
+    </VBox>
+</StackPane>

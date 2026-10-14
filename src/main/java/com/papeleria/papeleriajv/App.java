@@ -11,11 +11,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("primary.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Inventario.fxml"));
 
         Scene scene = new Scene(loader.load());
 
-        stage.setTitle("MEXORA - Punto de venta");
+        stage.setTitle("PAPELERIA");
         stage.setScene(scene);
         stage.show();
     }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.VentasController"
+            stylesheets="@styles.css"
+            styleClass="root-pane"
+            prefWidth="1100" prefHeight="640">
+
+    <top>
+        <HBox styleClass="header" alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Nueva venta" styleClass="title"/>
+                <Label text="Elige un producto, indica la cantidad y agrégalo al ticket" styleClass="subtitle"/>
+            </VBox>
+            <Button text="←  Inventario" styleClass="btn-secondary" onAction="#handleVolver"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox styleClass="content" spacing="16">
+
+            <!-- ============ CATÁLOGO ============ -->
+            <VBox spacing="12" HBox.hgrow="ALWAYS" prefWidth="560">
+                <TextField fx:id="txtBuscar" promptText="Buscar producto…"/>
+
+                <TableView fx:id="tablaCatalogo" VBox.vgrow="ALWAYS">
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                    <placeholder>
+                        <Label text="No se encontraron productos" styleClass="muted"/>
+                    </placeholder>
+                    <columns>
+                        <TableColumn fx:id="colCatNombre" text="Producto" minWidth="180"/>
+                        <TableColumn fx:id="colCatPrecioUnidad" text="Unidad" minWidth="80"/>
+                        <TableColumn fx:id="colCatPrecioCaja" text="Caja" minWidth="80"/>
+                        <TableColumn fx:id="colCatStock" text="Stock" minWidth="60"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Vender por" styleClass="field-label"/>
+                    <ComboBox fx:id="cmbTipo" prefWidth="110"/>
+                    <Label text="Cantidad" styleClass="field-label"/>
+                    <TextField fx:id="txtCantidad" text="1" prefWidth="70" onAction="#handleAgregar"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnAgregar" text="Agregar al ticket  →" styleClass="btn-primary"
+                            onAction="#handleAgregar"/>
+                </HBox>
+
+                <Label fx:id="lblMensaje" styleClass="error" wrapText="true" visible="false" managed="false"/>
+            </VBox>
+
+            <!-- ============ TICKET ============ -->
+            <VBox styleClass="ticket-panel" spacing="12" prefWidth="460" minWidth="460" maxWidth="460">
+                <Label text="Ticket actual" styleClass="section-title"/>
+
+                <TableView fx:id="tablaTicket" VBox.vgrow="ALWAYS">
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                    <columns>
+                        <TableColumn fx:id="colTkNombre" text="Producto" minWidth="120"/>
+                        <TableColumn fx:id="colTkTipo" text="Tipo" minWidth="55"/>
+                        <TableColumn fx:id="colTkCantidad" text="Cant." minWidth="45"/>
+                        <TableColumn fx:id="colTkPrecio" text="Precio" minWidth="70"/>
+                        <TableColumn fx:id="colTkSubtotal" text="Subtotal" minWidth="80"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="8">
+                    <Button fx:id="btnQuitar" text="Quitar" styleClass="btn-secondary" onAction="#handleQuitar"/>
+                    <Button fx:id="btnVaciar" text="Vaciar" styleClass="btn-danger" onAction="#handleVaciar"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="TOTAL" styleClass="total-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="\$0.00" styleClass="total-value"/>
+                </HBox>
+
+                <VBox spacing="4">
+                    <Label text="Atiende *" styleClass="field-label"/>
+                    <TextField fx:id="txtAtiende" promptText="Nombre de quien cobra"/>
+                </VBox>
+
+                <Button fx:id="btnCobrar" text="Cobrar" styleClass="btn-primary, btn-big"
+                        maxWidth="Infinity" onAction="#handleCobrar"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,55 @@
+/* ===== Paleta =====
+   Fondo:    #F7F5EF   Superficie: #FFFFFF   Texto: #2B2B2B
+   Acento:   #2F6F5E   Peligro:    #B3261E   Gris:  #6B6B6B
+   Espaciado basado en múltiplos de 4/8 px */
+
+.root-pane { -fx-background-color: #F7F5EF; -fx-font-size: 14px; }
+
+.header { -fx-padding: 24 24 8 24; }
+.title { -fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2B2B2B; }
+.subtitle { -fx-font-size: 13px; -fx-text-fill: #6B6B6B; }
+.content { -fx-padding: 8 24 16 24; }
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #D6D2C4;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12 8 12;
+}
+.text-field:focused { -fx-border-color: #2F6F5E; -fx-border-width: 2; }
+.text-field:disabled { -fx-opacity: 0.5; }
+
+.btn-primary, .btn-secondary, .btn-danger {
+    -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-cursor: hand; -fx-font-weight: bold;
+}
+.btn-primary { -fx-background-color: #2F6F5E; -fx-text-fill: white; }
+.btn-primary:hover { -fx-background-color: #265a4c; }
+.btn-secondary { -fx-background-color: white; -fx-border-color: #D6D2C4; -fx-border-radius: 8; -fx-text-fill: #2B2B2B; }
+.btn-secondary:hover { -fx-background-color: #EFECE2; }
+.btn-danger { -fx-background-color: white; -fx-border-color: #B3261E; -fx-border-radius: 8; -fx-text-fill: #B3261E; }
+.btn-danger:hover { -fx-background-color: #FBEAE9; }
+.button:disabled { -fx-opacity: 0.4; }
+
+.table-view { -fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #D6D2C4; -fx-border-radius: 8; }
+.table-view .column-header-background { -fx-background-color: #EFECE2; }
+.table-view .column-header .label { -fx-font-weight: bold; -fx-text-fill: #2B2B2B; }
+.table-row-cell { -fx-cell-size: 40px; }
+.table-row-cell:selected { -fx-background-color: #D8E9E3; }
+.table-row-cell:selected .text { -fx-fill: #2B2B2B; }
+
+.stock-bajo { -fx-text-fill: #B3261E; -fx-font-weight: bold; }
+.muted { -fx-text-fill: #6B6B6B; }
+.hint { -fx-font-size: 12px; -fx-text-fill: #6B6B6B; }
+.field-label { -fx-font-weight: bold; }
+.error { -fx-text-fill: #B3261E; -fx-font-size: 13px; }
+
+.dialog-card { -fx-background-color: white; -fx-background-radius: 12; -fx-padding: 24; }
+
+/* ===== Pantalla de ventas ===== */
+.ticket-panel { -fx-background-color: white; -fx-background-radius: 12; -fx-padding: 16; -fx-border-color: #D6D2C4; -fx-border-radius: 12; }
+.section-title { -fx-font-size: 18px; -fx-font-weight: bold; }
+.total-label { -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6B6B6B; }
+.total-value { -fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #2F6F5E; }
+.btn-big { -fx-font-size: 16px; -fx-padding: 12 16 12 16; }
+.combo-box { -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #D6D2C4; -fx-background-color: white; }
